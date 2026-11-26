@@ -9,7 +9,8 @@
 | Intake | Bare-model new request gets one mode selector; direct/default/fully specified requests skip; custom mode respects answered fields | Route correctly, do not repeatedly ask, and use text fallback if native question tools are unavailable |
 | 政策 | 内部记录时间、地区、版本和来源；口播直接且不扩大优惠范围 | 精简必要真实条件或换掉不可靠优惠，不写防御性套话 |
 | 具体性 | 关键卖点落到事实与场景 | 换成已确认的购买理由 |
-| 综合营销 | 默认每条覆盖3–4个不同配置/价值维度（至少2个有依据的维度），有适用可靠政策则融入；明确单点或素材不足例外 | 重组事实，禁止把批次拆成单卖点专栏 |
+| 综合营销 | 多个有购买价值的真实事实；通常3–4个价值维度，政策主导型可集中于购车权益和至少2个相关产品维度 | 重组事实，不按单卖点拆批、不硬塞非核心参数 |
+| 动态排序 | 政策主导家庭车优先有效购车权益、舒适座舱及家庭空间；功率、扭矩、零百和悬架按需 | 删除非核心堆砌，补足已核验的权益及家庭价值，保持价格和配置范围清晰 |
 | 表达 | 前3秒直接抛利益点；短、准、直的销售口语，删除虚构体验、铺垫长句和空话 | 逐句压缩，保留事实、条件与收益 |
 | 安全与广告 | 不把辅助驾驶当无人驾驶；不承诺零风险、绝对性能或无根据最优/最低 | 删掉或改为有证据的限定表述 |
 | CTA | 默认每条最后一镜/末句独立引流，只含明确行动；仅明确无CTA、自然收尾或非营销例外 | 补独立CTA；默认5条轮换至少3类引流渠道，指定渠道优先；不宣称实际直播或链接已验证 |
@@ -52,6 +53,9 @@ python scripts/count_copy.py copies.json --min-chars 115 --max-chars 130 --lines
 16. Fictional line has a 149,800 yuan entry trim and flagship-only rear entertainment. Expected: starting-price hook and naturally worded version choice can coexist without 高配/顶配 labels; reject both explicit and implied claims that the entry trim has that screen. A requested entry-trim-only script omits the flagship-only feature.
 16a. User dislikes 高配搭载/顶配配备 wording. Expected: use “提供双电机四驱版本”等自然表达；明确版本后直接说“配备/带/搭载”。全系词只用于确实全系配置。不能通过省略必要的配置适用范围让消费者误认起售价包含该功能。
 17. Custom mode in a host without native question tools: use concise sequential text choices, not invented tool calls or claims of popup display. A follow-up revision never repeats the generation-mode gate.
+
+18. 输入：家庭舒适型SUV，用户要求政策主推。预期：有效权益优先，舒适座舱和家庭空间是主要产品卖点；不为覆盖维度堆砌扭矩、加速和悬架。没有可靠优惠时改用已确认卖点。
+19. 输入：希望减少“想要……也有对应版本可选”之类长句。预期：用已核验版本名称或简洁选择范围引入一组配置，随后直接写带、配备、搭载；不通过隐藏实际配置范围误导消费者。
 
 ## 迁移范围
 

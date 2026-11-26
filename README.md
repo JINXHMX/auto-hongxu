@@ -1,6 +1,6 @@
 # Auto Hongxu | 汽车文案智能体
 
-**V1.3.1** · [![skills.sh](https://skills.sh/b/JINXHMX/automotive-copy-agent)](https://skills.sh/JINXHMX/automotive-copy-agent)
+**V1.3.2** · [![skills.sh](https://skills.sh/b/JINXHMX/automotive-copy-agent)](https://skills.sh/JINXHMX/automotive-copy-agent)
 
 一套面向中国汽车短视频创作者与经销商的可复用 Agent Skill：动态车型研究 → 事实核验 → 卖点提炼 → 文案创作 → 质量审核。
 
@@ -54,7 +54,7 @@ npx skills add JINXHMX/automotive-copy-agent --list
 
 [下载 skill.zip](./skill.zip)，在支持自定义 Skills 的客户端中按照平台的导入流程安装。ChatGPT 的技能入口及可用性取决于账户和工作空间。
 
-## V1.3.1 综合营销默认规则
+## V1.3.2 综合营销默认规则
 
 - 默认5篇、每篇20秒、5镜；按实际AI配音反馈校准115–130正文字符，优先120–125，不计标点与空白，包含CTA。
 - 每篇一个独立纯文本代码块，每镜一行、无空行、无标题/序号/分镜标签或表格，一键复制。
@@ -77,6 +77,12 @@ npx skills add JINXHMX/automotive-copy-agent --list
 - WorkBuddy 可从技能页面导入本仓库的 `skill.zip`；选择器能否触发仍需实际客户端验证。
 
 官方参考：[WorkBuddy 更新日志](https://www.codebuddy.cn/docs/workbuddy/Changelog) · [WorkBuddy Enterprise SDK 问答工具](https://cloud.tencent.cn/document/product/1831/137037)。
+
+## 动态营销重点
+
+- 家庭舒适、价格权益导向车型：优先有效购车价格与权益、冰箱/娱乐屏/舒适座椅、家庭空间；动力峰值、底盘与续航按需补充。
+- 性能、经济通勤、商用等其他车型依据实际受众和产品定位调整卖点顺序。
+- 避免反复出现高配/顶配标签或冗长的版本说明，准确交代实际配置范围，不将非全系装备描述成起售价包含的配置。
 
 ## 功能
 
