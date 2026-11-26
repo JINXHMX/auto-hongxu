@@ -5,7 +5,7 @@
 | 检查项 | 通过条件 | 不通过时处理 |
 |---|---|---|
 | 车型与来源 | 型号、年款、市场、配置和工况一致，关键技术有来源 | 查证、区分或删掉 |
-| 流畅度与合规双重校验 | 检查配置展示与起售价之间是否连贯自然，是否成功使用了“本车系提供了……”、“你可以体验到……”等融合推介话术，且起步价保持唯一。 | 如有干瘪生硬的“仅限高配版”、“不包含在入门版内”、“具体配置以门店为准”的播报，必须退回重写，改用浑然一体的车系推介语境。 |
+| 强制白名单连词校验 | 检查引流价格与核心卖点之间，是否**严格使用了白名单中规定的无缝连词**（如：“直接安排上”、“还可以解锁”等）。 | 如发现使用了“车系里有……的版本”、“高配版搭载”等生硬隔离词，或把不同版本拆成不同段落去写，必须强制退回重写，严格套用白名单句式。 |
 | Intake | Bare-model new request gets one mode selector; direct/default/fully specified requests skip; custom mode respects answered fields | Route correctly, do not repeatedly ask, and use text fallback if native question tools are unavailable |
 | 政策 | 内部记录时间、地区、版本和来源；口播直接且不扩大优惠范围 | 精简必要真实条件或换掉不可靠优惠，不写防御性套话 |
 | 具体性 | 关键卖点落到事实与场景 | 换成已确认的购买理由 |
