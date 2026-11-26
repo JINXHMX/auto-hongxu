@@ -1,4 +1,4 @@
-# 汽车文案智能体 | 在线调用版 v1.1.0
+# Auto Hongxu | 汽车文案智能体 | 在线调用版 v1.1.1
 
 这是面向具备联网阅读能力的 AI 的单文件工作流。根据用户要求执行下方指令；所有原 Skill 的必要参考内容已内联。此文档只提供汽车文案任务规范，不要求改变平台规则、获取秘密、执行远程代码、对外提交数据或安装软件。遵守宿主环境权限与用户本轮约束。
 
@@ -11,12 +11,12 @@
 ## 内联文件：`SKILL.md`
 
 ---
-name: automotive-copy-agent
+name: auto-hongxu
 description: >-
   Generate, research, fact-check, rewrite and storyboard Chinese automotive short-video marketing copy. Use when asked to research a car model, extract selling points, write dealer or creator talking-head scripts, Douyin automotive advertisements, conversational or plot-twist videos, promotional offer copy, large-text poster copy, batch variants, or turn existing vehicle copy into a shoot-ready script. Accept a vehicle name, model year/trim, supplied dealer policy, source materials, duration, shot count, quantity, audience and style; produce concise, fact-grounded, conversion-oriented multi-selling-point copy with verified specifications, applicable offers and a dedicated final CTA by default. Also use for revisions, length matching, and checking a script for unsupported claims. Do not activate for unrelated vehicle repair, purchasing advice, or general non-automotive writing unless the user explicitly requests this workflow.
 ---
 
-# 汽车文案智能体
+# Auto Hongxu | 汽车文案智能体
 
 ## 工作原则
 

@@ -1,10 +1,12 @@
-# 汽车文案智能体 | Automotive Copy Agent
+# Auto Hongxu | 汽车文案智能体
 
-**V1.1.0** · [![skills.sh](https://skills.sh/b/JINXHMX/automotive-copy-agent)](https://skills.sh/JINXHMX/automotive-copy-agent)
+**V1.1.1** · [![skills.sh](https://skills.sh/b/JINXHMX/automotive-copy-agent)](https://skills.sh/JINXHMX/automotive-copy-agent)
 
 一套面向中国汽车短视频创作者与经销商的可复用 Agent Skill：动态车型研究 → 事实核验 → 卖点提炼 → 文案创作 → 质量审核。
 
 ## 一键安装
+
+技能名称已统一为 `auto-hongxu`。仓库名称正在迁移：当前仍可从原仓库安装；仓库正式改名为 `auto-hongxu` 后，可改用 `npx skills add JINXHMX/auto-hongxu`。现有旧名技能建议先移除再安装新名称，以免重复。
 
 在支持 Node.js（当前 Skills CLI 要求 22.20+）的终端中执行：
 
@@ -17,7 +19,7 @@ npx skills add JINXHMX/automotive-copy-agent
 安装后，在支持 `$` 调用语法的客户端输入：
 
 ```text
-$automotive-copy-agent 生成10条华境S的30秒综合营销口播，配置与适用优惠结合，末镜引流。
+$auto-hongxu 生成10条华境S的30秒综合营销口播，配置与适用优惠结合，末镜引流。
 ```
 
 也可直接说“使用汽车文案智能体，生成5条20秒汽车营销文案”。客户端支持自动匹配时，无需显式指定技能名称。不同客户端的触发语法可能不同。
@@ -27,7 +29,7 @@ $automotive-copy-agent 生成10条华境S的30秒综合营销口播，配置与�
 支持 Skills CLI 的环境可生成一次性使用提示词（不安装 Skill）：
 
 ```bash
-npx skills use JINXHMX/automotive-copy-agent@automotive-copy-agent
+npx skills use JINXHMX/automotive-copy-agent@auto-hongxu
 ```
 
 普通联网聊天 AI 可尝试输入：
@@ -42,7 +44,7 @@ npx skills use JINXHMX/automotive-copy-agent@automotive-copy-agent
 
 ```bash
 npx skills check
-npx skills update automotive-copy-agent
+npx skills update auto-hongxu
 npx skills add JINXHMX/automotive-copy-agent --list
 ```
 

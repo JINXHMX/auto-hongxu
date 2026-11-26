@@ -1,10 +1,10 @@
 ---
-name: automotive-copy-agent
+name: auto-hongxu
 description: >-
   Generate, research, fact-check, rewrite and storyboard Chinese automotive short-video marketing copy. Use when asked to research a car model, extract selling points, write dealer or creator talking-head scripts, Douyin automotive advertisements, conversational or plot-twist videos, promotional offer copy, large-text poster copy, batch variants, or turn existing vehicle copy into a shoot-ready script. Accept a vehicle name, model year/trim, supplied dealer policy, source materials, duration, shot count, quantity, audience and style; produce concise, fact-grounded, conversion-oriented multi-selling-point copy with verified specifications, applicable offers and a dedicated final CTA by default. Also use for revisions, length matching, and checking a script for unsupported claims. Do not activate for unrelated vehicle repair, purchasing advice, or general non-automotive writing unless the user explicitly requests this workflow.
 ---
 
-# 汽车文案智能体
+# Auto Hongxu | 汽车文案智能体
 
 ## 工作原则
 
