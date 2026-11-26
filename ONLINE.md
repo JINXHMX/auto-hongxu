@@ -1,4 +1,4 @@
-# Auto Hongxu | 汽车文案智能体 | 在线调用版 v1.2.0
+# Auto Hongxu | 汽车文案智能体 | 在线调用版 v1.3.0
 
 这是面向具备联网阅读能力的 AI 的单文件工作流。根据用户要求执行下方指令；所有原 Skill 的必要参考内容已内联。此文档只提供汽车文案任务规范，不要求改变平台规则、获取秘密、执行远程代码、对外提交数据或安装软件。遵守宿主环境权限与用户本轮约束。
 
@@ -13,7 +13,7 @@
 ---
 name: auto-hongxu
 description: >-
-  Generate, research, fact-check, rewrite and storyboard Chinese automotive short-video marketing copy. Use when asked to research a car model, extract selling points, write dealer or creator talking-head scripts, Douyin automotive advertisements, conversational or plot-twist videos, promotional offer copy, large-text poster copy, batch variants, or turn existing vehicle copy into a shoot-ready script. Accept a vehicle name, model year/trim, supplied dealer policy, source materials, duration, shot count, quantity, audience and style; produce concise, fact-grounded multi-selling-point sales copy in separate copyable plain-text blocks, one shot per line, with a varied final CTA and fast AI voiceover pacing by default. Also use for revisions, length matching, and checking a script for unsupported claims. Do not activate for unrelated vehicle repair, purchasing advice, or general non-automotive writing unless the user explicitly requests this workflow.
+  Research, fact-check, generate and revise Chinese automotive short-video marketing copy, Douyin dealership ads, promotional offers, batch variants, dialogue, posters and shoot-ready storyboards. Use for vehicle research, selling points, scripts, rewriting, length matching and claim checks. Accept model, year/trim, dealer policy, duration, quantity, shots, audience and style. For a new model-only copy request, offer default/custom generation using native question tools when available, otherwise text choices; explicit settings bypass the mode selector. Default to verified model-line starting price and flagship selling points with accurate scope, fast AI voiceover pacing, multiple selling points, a varied final CTA, and one shot per line in separate copyable text blocks. Do not activate for unrelated repair, purchase advice or non-automotive writing unless explicitly requested.
 ---
 
 # Auto Hongxu | 汽车文案智能体
@@ -26,10 +26,14 @@ description: >-
 
 提取：品牌/车型/市场/年款/配置版本、文案类型、投放渠道、目标用户、主题/指定卖点、用户提供的政策及适用条件、时长、数量、镜头数、场景/人物、语言风格、是否需要 CTA、字数/格式及参考素材。沿用对话中有效约束，不重复询问。
 
-- 只给车型：以中国大陆在售车型为默认研究市场（用户给出其他市场则覆盖），研究最新在售年款及最高配置；明确标出假设，不能把最高配说成全系标配。若价格涉及入门款/其他配置，独立标注版本。车型名称无法确认时，先检索正确名称，不猜测。
+### Generation mode gate (before research)
+
+Read [references/intake.md](references/intake.md) for mode routing, native question-tool use and custom settings. On a fresh copy-generation request containing only a vehicle name, offer 默认生成 or 自定义生成 and wait for the selection. Explicit default/direct generation, or a request already specifying substantive settings, skips this gate. Explicit custom mode opens the questionnaire directly. Do not reopen the gate during revisions, regeneration of a selected item or follow-ups using an already chosen mode. Never claim a popup is available if the host does not expose a suitable tool; offer a short text choice instead.
+
+- Default scope is the complete latest on-sale model line in mainland China, unless the user specifies another market, year or trim. Research two independent tracks: the lowest verified applicable entry/starting price and the highest on-sale trim's verified configurations. Do not restrict the selling-point pool to the entry trim just because its price is cited. Also research model-line maxima (range, power, etc.) where useful; identify their actual variant. For a specified trim, use facts and price for that trim unless the user explicitly asks for model-line comparisons. Verify ambiguous model names before writing.
 - 默认综合营销口播：5条、每条20秒、5个口播镜段。每篇一个独立纯文本代码块，每镜一行，行间无空行，不加标题、序号、分镜标签、时间、表格或分析。最后一行专门CTA。用户指定数量、时长、镜数或格式时覆盖默认值；仅明确要求详细拍摄脚本时补机位、画面等。
 - 默认主动核查可用指导价、置换、金融、补贴等价格权益并融入综合文案；政策不明：不发明。用户提供的门店政策按其口径起草，记录在内部事实包；不在口播插入来源或防御性说明。保留改变事实含义的必要条件，能用直接销售语言表达则精简；不能准确简洁表达的局部或未确认优惠，改用其他已确认卖点。
-- 缺少非必要信息时作合理假设并继续，只有车型身份或关键购买条件确实无法辨明且会影响内容时才询问。
+- 缺少非必要信息时作合理假设并继续，只有车型身份或关键购买条件确实无法辨明且会影响内容时才询问。 The mode gate above is an intentional optional preference choice, not a request for missing mandatory data; the direct/default shortcut bypasses it.
 
 选择工作模式：
 - **研究/卖点**：执行步骤 2–3；输出所请求的事实或卖点及来源。
@@ -41,13 +45,13 @@ description: >-
 
 阅读 [references/research.md](references/research.md) 执行车型研究、来源核验和 Fact Pack 结构。使用环境中可用且获准的联网检索；没有联网能力时，明确说明限制，不声称已核实，不编造引用。无需外部 API 密钥、第三方服务或长期车型数据库。
 
-先确认车型身份和版本，再根据车型定位及选题生成研究主题。优先找官方车型/配置页、官方发布信息、对应地区的活动规则，辅以可靠媒体。价格、权益、补贴、库存及限时政策独立核查。每条可引用事实绑定实际来源；区分 `CONFIRMED`、`CONFLICT`、`LOW_CONFIDENCE`、`USER_PROVIDED`。不同版本或口径不得混算；找不到可靠政策时记为 `NO_CONFIRMED_CURRENT_POLICY`，不要补写。
+先确认车型身份和版本，再根据车型定位及选题生成研究主题。优先找官方车型/配置页、官方发布信息、对应地区的活动规则，辅以可靠媒体。价格、权益、补贴、库存及限时政策独立核查。每条可引用事实绑定实际来源；区分 `CONFIRMED`、`CONFLICT`、`LOW_CONFIDENCE`、`USER_PROVIDED`。不同版本或口径不得混算；找不到可靠政策时记为 `NO_CONFIRMED_CURRENT_POLICY`，不要补写。 In model-line mode, preserve source/trim bindings separately for startingPrice, flagshipTrim and optional seriesMaxima; combine these verified facts at the model-line level, never as an invented single trim.
 
 同一批次共享同一份事实基础。对当前对话内尚未过时且同车型同条件的局部改稿复用；新批次或政策变化重新查证。不要声称拥有实际跨会话缓存或数据库。高风险或冲突信息未解决则不进入营销正文。
 
 ## 3. Selling Point Engine：从事实到购买理由
 
-把每个候选卖点写成 `theme / userProblem / userBenefit / scenarios / factRefs / strength / visualPotential`。默认每篇组合3–4个不同配置/价值维度（至少2个有依据的维度），并优先融合适用且已确认的价格或优惠政策（不是一篇只讲一个点）。结合受众、时长和已核验事实选择，不以重复细节冒充多个维度。事实有限或视频极短则减少维度，不编造。明确指定单卖点时才切换单点模式。
+把每个候选卖点写成 `theme / userProblem / userBenefit / scenarios / factRefs / strength / visualPotential`。默认每篇组合3–4个不同配置/价值维度（至少2个有依据的维度），并优先融合适用且已确认的价格或优惠政策（不是一篇只讲一个点）。结合受众、时长和已核验事实选择，不以重复细节冒充多个维度。事实有限或视频极短则减少维度，不编造。明确指定单卖点时才切换单点模式。 For model-line marketing, prioritize flagship features and genuine series-level maxima alongside the separately verified entry price. Use shared/all-trim facts freely only where evidence supports that scope.
 
 事实 → 解决的问题 → 使用场景 → 用户收益 → 适合镜头表现的语言。不要把参数的重命名视为卖点。不同脚本可以选不同事实组合，但必须来自同一可信事实包。
 
@@ -58,7 +62,7 @@ description: >-
 写作规则：
 - 前3秒直接给出车型/目标人群/价格权益/核心购买利益之一，优先使用与车型有关的具体信息，不用长篇情境铺垫。避免“今天带大家”“这款车绝对值得”“重新定义”“极致”“科技感拉满”等套话。
 - 用短、准、直的汽车销售口语：一短句一有效信息，优先车型名、真实参数、具体配置、实际权益和购买价值；以短分句为主，删掉冗长故事、反复解释、假装亲身体验及无信息连接词。无需每个参数都展开生活故事；人物对白模式保持真实聊天。
-- 一条默认营销文案是一则完整的综合广告，不是一个配置专栏。以一个购买决策为主线串联多个维度；默认5镜：利益钩子、核心利益/价格政策、配置价值、另一配置/政策、CTA。前四镜可调顺序和合并相关事实，最后一镜固定CTA；先读通完整口播，再自然分镜，时间连续、总时长匹配。
+- 一条默认营销文案是一则完整的综合广告，不是一个配置专栏。以一个购买决策为主线串联多个维度；默认5镜：利益钩子、核心利益/价格政策、配置价值、另一配置/政策、CTA。前四镜可调顺序和合并相关事实，最后一镜固定CTA；先读通完整口播，再自然分镜，时间连续、总时长匹配。 In model-line mode, a starting-price hook and flagship configurations may coexist in the same copy. Mark the price as a starting price (e.g. XX万元起) and introduce flagship-only features once with 顶配搭载 or 高配搭载; use 最高可达 or a short variant name for genuine model-line maxima. Prefer separate lines for price and high-trim features. Do not imply that the starting price purchases all listed features, e.g. avoid "XX万元起就能拿下顶配". These short scope markers are precise sales language, not defensive disclaimers.
 - 默认每篇营销文案必须有独立的末镜/末句CTA，只写明确引流动作，不在末镜继续讲配置。按用户指定渠道优先使用；未指定时按短视频广告投放场景轮换点进直播间、点击头像私信、点击左下角链接、到店咨询/试驾等。默认5条至少覆盖3类不同引流渠道（若用户限制渠道则服从），不要全批都到店。CTA是供人工审核的投放话术选项，不声称已确认实际链接或直播状态，不承诺未经核验的福利。用户明确要求无CTA、自然收尾或非营销内容时不强加；仅要求无价格不等于无CTA。
 - 批量先制定不同开头、购买理由组合、政策位置、表达节奏与可用CTA；每条仍是完整综合营销文案，禁止把整批拆成空间篇、底盘篇等单卖点合集（明确要求时除外）。
 - 以用户AI配音实测反馈校准：旧稿80多字约14秒，默认20秒目标115–130个正文字符（不计空白、标点，含CTA），优先120–125；30秒约170–195。非20秒按约5.7–6.5字符/秒换算，用户提供实测语速、目标字数或其他风格则覆盖。先预留末镜约15–22字符；通过增加真实配置、技术参数、优惠细节和直接收益补足前四镜，禁止用铺垫和废话凑字数。数字、英文实际读音及停顿会影响成片时长；不宣称未经配音实测的精确秒数。
@@ -67,7 +71,7 @@ description: >-
 
 逐条执行 [references/quality-checks.md](references/quality-checks.md)；发现问题自行修订再交付。至少确认：
 
-1. 车型版本正确、每项具体事实有可靠依据；禁止将辅助驾驶描述成自动驾驶或安全保证。
+1. 车型版本正确、每项具体事实有可靠依据；禁止将辅助驾驶描述成自动驾驶或安全保证。 In model-line mode, verify both entry price and flagship facts independently, retain clear scope, and reject wording that promises flagship features at entry price. Check resolved custom settings before generating.
 2. 用户明确的数量、时长、字数、分镜数、CTA、风格、场景和不变项全部满足。默认每篇独立代码块内恰好5个非空台词行、115–130正文字符，无序号或标签；不合格先重写。
 3. 默认营销逐篇检查综合性（不同配置/价值维度、已确认可用政策）、短句信息密度与独立末镜CTA；若退化为单点测评、长篇叙述或缺CTA，必须重写后再交付。无空泛夸张、绝对化承诺或虚假稀缺。
 4. 批量差异明显；某条不合格时单独修正，保留通过的条目，不因单条失败丢弃整批。
@@ -77,6 +81,7 @@ description: >-
 
 ## 附属资源
 
+- [references/intake.md](references/intake.md): interactive mode gate, custom questionnaire, client-specific capability checks, and direct-call shortcuts.
 - [references/research.md](references/research.md)：车型动态研究、事实包和来源规则。
 - [references/copy-formats.md](references/copy-formats.md)：文案类型、样例、拍摄脚本及批量模板。
 - [references/marketing-conversion.md](references/marketing-conversion.md)：默认综合营销、短句剪辑、固定CTA与验收示例。
@@ -91,12 +96,12 @@ description: >-
 
 ## 研究目标
 
-根据用户选题有针对性地了解车型，而不是套用固定配置表。按车型、年款、市场、具体配置、动力形式确定研究范围；不跨车系、版本和上市状态混用参数。先确认身份、再研究、再写作。
+Research the actual model line, model year, market, sale status and variant matrix. Do not invent a trim from incompatible parts. Model-line advertising may combine independently verified entry prices and flagship selling points in one script while keeping their scopes clear. For trim-specific copy, constrain the facts to the requested trim.
 
 ### A. Initial Discovery
 
 1. 用品牌、车型、别名和市场查找官方信息；用户使用拼写错误或简称时验证真实名称，不自行补造车型。
-2. 确认在售/预售/已停售、年款、配置版本、动力路线和车型定位。用户未指明时默认最新在售最高配，但明确所用版本，不推断全系配备。
+2. Identify the latest on-sale model line, its entry trim and price, its highest on-sale trim and core configurations, and relevant model-line maxima with exact source variant and test cycle. Research both tracks independently. Do not infer that every variant has flagship-only features. When a particular trim is requested, research that trim instead.
 3. 若新年款尚未上市，不以预售或传闻当作正式在售车型；若找不到有效官方信息，标明限制。
 
 ### B. Dynamic Research Plan
@@ -119,7 +124,7 @@ description: >-
 
 ### D. Price & Policy 独立核查
 
-价格按官方指导价、预售价、终端成交价、置换价、金融方案区分；优惠与权益不等于裸车减免。确认适用时间、地区、车型/配置、对象、前置条件、叠加限制、门店差异。不得将用户提供的门店政策写成全国统一政策，不得把库存、退网、清库、售完无补、限时等断言编造出来。用户提供政策可使用但记录 `USER_PROVIDED`，不声称已经第三方核实。将来源、适用范围与核验结果保留在事实包。台词避免“部分门店”“以门店为准”等泛化防御话术；能用准确直接的销售表述（如置换权益的真实适用对象）则使用，无法在短句中保持事实准确的局部优惠则省略，不擅自扩大范围。无可信当前政策：`NO_CONFIRMED_CURRENT_POLICY`，仅写已核实的卖点或请用户提供政策。
+价格按官方指导价、预售价、终端成交价、置换价、金融方案区分；优惠与权益不等于裸车减免。确认适用时间、地区、车型/配置、对象、前置条件、叠加限制、门店差异。不得将用户提供的门店政策写成全国统一政策，不得把库存、退网、清库、售完无补、限时等断言编造出来。用户提供政策可使用但记录 `USER_PROVIDED`，不声称已经第三方核实。将来源、适用范围与核验结果保留在事实包。台词避免“部分门店”“以门店为准”等泛化防御话术；能用准确直接的销售表述（如置换权益的真实适用对象）则使用，无法在短句中保持事实准确的局部优惠则省略，不擅自扩大范围。无可信当前政策：`NO_CONFIRMED_CURRENT_POLICY`，仅写已核实的卖点或请用户提供政策。 For model-line advertising, store the verified entry/starting price and the flagship configuration separately. State the price with its real category (official starting price, trade-in starting price, etc.) and a starting-price marker; never represent a conditional offer as an unconditional base price. Do not downgrade the flagship selling-point pool to the entry trim. If a maximum belongs to a different trim, identify its scope rather than representing a fictitious combined flagship.
 
 ### E. Fact Pack（内部结构，可按需展示）
 
@@ -132,6 +137,14 @@ vehicleIdentity:
   trim: <配置或明确适用范围>
   saleStatus: <已核实状态或未知>
   assumptions: []
+modelLineScope:
+  mode: SERIES
+  entryTrim: <verified entry trim>
+  startingPriceFactRef: <price fact ID or unknown>
+  flagshipTrim: <verified highest trim>
+  flagshipFactRefs: []
+  seriesMaximaFactRefs: []
+  # In TRIM mode, use the requested variant only.
 researchPlan:
   audience: <受众>
   topics: []
@@ -180,7 +193,7 @@ sellingPoints:
 
 ## 1. 综合营销口播（默认）
 
-按 [marketing-conversion.md](marketing-conversion.md) 的默认营销模式执行。每篇是完整的综合广告：利益钩子、不同维度的产品卖点、可用价格权益、末镜CTA。默认每篇独立纯文本代码块，5个非空台词行，一镜一行，行间无空白。不要文案标题、序号、分镜名、时间、表格、图片或话术分析。默认仅给这些复制块；末行CTA。
+按 [marketing-conversion.md](marketing-conversion.md) 的默认营销模式执行。每篇是完整的综合广告：利益钩子、不同维度的产品卖点、可用价格权益、末镜CTA。默认每篇独立纯文本代码块，5个非空台词行，一镜一行，行间无空白。不要文案标题、序号、分镜名、时间、表格、图片或话术分析。默认仅给这些复制块；末行CTA。 In the default model-line mode, use the verified starting price independently of the flagship selling points. Refer to the high-trim feature group with a concise scope marker and place it apart from the starting-price clause. Use the selected custom quantity, duration, line count, format and CTA if supplied.
 
 **示例（虚构输入，不代表真实车型或权益）**
 
@@ -261,6 +274,12 @@ sellingPoints:
 
 每篇都是完整的综合广告，优先组合3–4个不同配置/价值维度（有依据时至少2个）与可用价格/置换/金融政策。按车型选择空间、座舱、动力、补能、底盘、辅助驾驶等，不机械套目录。用具体技术名称、真实数字、配置组合和简洁收益提高信息量，而不是单点反复叙述。批量改变钩子、多个事实组合、政策位置、表达顺序和CTA渠道；不把每篇拆成单项配置科普。事实不足则补查或用其他可靠卖点；不为凑字数虚构。明确区分入门价格和高配配置。
 
+### Model-line price and feature composition
+
+Default to series-wide marketing: take the verified applicable entry price as the starting price, and prioritize the highest on-sale trim's configurations. A model-line maximum (range, power, charging, etc.) may come from another verified variant; describe it as a maximum or name the variant. Do not restrict the script to entry-level equipment merely because it contains an entry-level price. Keep price and feature clauses separate, with short commercial scope markers such as XX万元起, 顶配搭载, 高配搭载, or 最高可达. A single high-trim scope marker can introduce a group of verified features; no need to repeat the trim name for every feature. Only write all-trim/standard-equipment language where verified. Avoid implying an entry price includes the high-trim package. Never disguise offer eligibility as a universal price. Specific-trim requests override the series default.
+
+Example (fictional numbers/features for wording only): a model line starts at 149,800 yuan; its flagship has rear entertainment screen and seat ventilation. Correct: start with the model-line price, then introduce the flagship feature group. Incorrect: claim the 149,800 yuan entry version includes that rear screen. Do not use fictitious examples as vehicle facts.
+
 ## C. 20秒5镜与AI配音校准
 
 用户实测旧稿80多字约14秒，按相同AI配音节奏，默认20秒115–130正文字符，优先120–125。其他时长按约5.7–6.5字符/秒调整（30秒约170–195），用户实测或明确字数优先。字符数不计空白、标点，含末镜CTA，数字和字母逐字符计数；实际发音和停顿另估，不宣称已做真实配音测时。
@@ -313,6 +332,8 @@ sellingPoints:
 | 检查项 | 通过条件 | 不通过时处理 |
 |---|---|---|
 | 车型与来源 | 型号、年款、市场、配置和工况一致，关键技术有来源 | 查证、区分或删掉 |
+| Model-line price & features | Verified entry starting price and flagship equipment selected separately, actual variant scopes clear; no implied entry-price entitlement to flagship features | Fix scope or remove unsupported feature |
+| Intake | Bare-model new request gets one mode selector; direct/default/fully specified requests skip; custom mode respects answered fields | Route correctly, do not repeatedly ask, and use text fallback if native question tools are unavailable |
 | 政策 | 内部记录时间、地区、版本和来源；口播直接且不扩大优惠范围 | 精简必要真实条件或换掉不可靠优惠，不写防御性套话 |
 | 具体性 | 关键卖点落到事实与场景 | 换成已确认的购买理由 |
 | 综合营销 | 默认每条覆盖3–4个不同配置/价值维度（至少2个有依据的维度），有适用可靠政策则融入；明确单点或素材不足例外 | 重组事实，禁止把批次拆成单卖点专栏 |
@@ -352,10 +373,62 @@ python scripts/count_copy.py copies.json --min-chars 115 --max-chars 130 --lines
 
 11. 输入：“只给车型，按默认生成。”预期：没有文案标题、分镜号、空白行、表格或防御性话术；默认5个代码块分别5行；每篇115–130字符，末行轮换直播间、头像私信、左下角链接和到店等。
 12. 输入：只查到地区性促销且受众不明确。预期：不出现“部分门店”等话术，不把局部优惠写成普惠；用其他确认配置补足字数。
+13. Fresh request: "$auto-hongxu <model>" without settings. Expected: one default/custom selector before research; native question tool only if actually exposed and allowed, otherwise concise text choices. No generated scripts until mode selected.
+14. "$auto-hongxu <model> 默认生成". Expected: skip all optional questions; generate 5 x 20 seconds x 5 lines under the existing defaults.
+15. Explicit custom mode: choose 10 copies, 30 seconds, 6 lines, live-room CTA, no price. Expected: do not re-ask known fields; fill skipped options with defaults; output 10 six-line blocks, each about 170-195 characters, all ending in the chosen CTA, no price.
+16. Fictional line has a 149,800 yuan entry trim and flagship-only rear entertainment. Expected: model-line starting price and clearly scoped flagship equipment can coexist; reject claims that the entry trim has that screen. A requested entry-trim-only script omits the flagship-only feature.
+17. Custom mode in a host without native question tools: use concise sequential text choices, not invented tool calls or claims of popup display. A follow-up revision never repeats the generation-mode gate.
 
 ## 迁移范围
 
 本 Skill 以 2026-09-05 的汽车短视频文案生成工具 V3 项目交接设计为基础，结合汽车口播和拍摄脚本的实际使用习惯。原交接时 V3 Research/Copy Engine 的完整业务实现尚未验收；这里将其设计迁移为对话内的工作规范，不声称完全复刻当前服务器源代码、原始系统提示词或线上运行状态。不依赖原 Web 前端、第三方模型 API、SSH、部署、数据库、登录、会话缓存；不得请求或保存原项目密钥、私钥和服务器凭据。当前可用联网能力由宿主环境提供，无法联网时诚实降级。
+
+---
+
+## 内联文件：`references/intake.md`
+
+# Generation Intake | Default and Custom
+
+## 1. Route the request
+
+Apply this only to new automotive copy-generation batches, not factual research, critiques, modifications of existing copy, selected-item regeneration, or a user who already chose a mode in the active task.
+
+- Bare model name or equivalent model-only invocation: offer exactly one choice between 默认生成 and 自定义生成. Wait for that choice before research and drafting. The recommended option is 默认生成. Its short preview is 5 copies / 20 seconds / 5 lines / integrated marketing / entry starting price and flagship features / varied CTA. 自定义生成 opens only the missing preference questions.
+- Explicit default/direct/skip or a request already specifying substantive generation settings: skip the mode gate, respect explicit fields, fill the remaining optional fields from defaults. A user can say "$auto-hongxu <model> 默认生成" for immediate execution.
+- Explicit custom mode or a request for a questionnaire: skip the first selector and ask only unanswered settings. If custom settings are already complete, proceed directly.
+- A follow-up such as "regenerate number 2" or "change to live-room CTA" preserves the active settings and never reopens the mode gate unless the user requests a new setup.
+
+## 2. Native interface and fallback
+
+Use a host-provided structured user-question tool only when it is actually available in the current turn and allowed by host instructions. This Skill does not install tools or create a custom modal. It defines the requested interaction.
+
+- WorkBuddy: prefer the native question selector when exposed. WorkBuddy Enterprise SDK documents `AskUserQuestion` with questions, headers, options (label/description) and multiSelect. Use the actual exposed tool schema, not a fabricated call or hardcoded SDK invocation. Desktop availability depends on client version, model and mode. See https://www.codebuddy.cn/docs/workbuddy/Changelog and https://cloud.tencent.cn/document/product/1831/137037.
+- Codex: prefer `request_user_input` only when exposed and permitted in the current collaboration mode. Follow the tool's schema, typically 1-3 short questions per call and 2-3 mutually exclusive options each; the client may supply free-form Other. Never switch collaboration mode or modify client config on behalf of the user just to show a selector.
+- ChatGPT and other hosts: use a native choice/input interface if supplied and allowed. Otherwise use short text choices, e.g. A. 默认生成 / B. 自定义生成, and wait for the user's reply. If host instructions prohibit textual multiple-choice lists, ask one concise natural-language question instead.
+- Never simulate a real tool call with a code block or claim a popup was displayed merely because instructions exist. A user who cancels the task should not receive a generated batch; a user who chooses skip/default gets defaults. If the native tool fails, fall back once to text instead of repeatedly invoking it. Respect the host's handling of unanswered optional questions.
+
+## 3. Custom questionnaire
+
+Ask in the user's language. Only ask fields not yet resolved. Group compatible questions (up to the tool's actual limit, preferably 2-3 per interaction); offer recommended defaults and free text where supported. No mandatory questionnaire for a user who chooses default. After answers are collected, fill skipped optional fields from defaults and generate without a redundant confirmation. Do not ask the user for technical field names.
+
+| Setting | Default | Suggested options / input |
+|---|---|---|
+| copy_type | Integrated marketing | Integrated marketing; offer-led marketing; scenario/dialogue; user-defined |
+| count | 5 | 3; 5; 10; custom integer |
+| duration_seconds | 20 | 15; 20; 30; custom positive seconds |
+| shot_count | 5 | 3; 5; 6; custom positive integer |
+| emphasis | Multiple selling points | Integrated; user-selected configuration themes; offer-focused |
+| vehicle_scope | Model line | Entry starting price + flagship features; specific trim (ask for name if needed) |
+| price_policy | Verified applicable starting price and offers | Include verified price/offers; omit price; user-provided price/offer and eligibility |
+| cta | Rotate channels | Rotate; live room; avatar DM; bottom-left link; showroom/test drive; no CTA |
+| style | Short, direct, dense sales language | Default sales; high-energy promotional; conversational; user-defined |
+| output_format | One copyable text block per script | Plain blocks; detailed storyboard if explicitly requested; poster text |
+
+When the interface allows only 2-3 choices, combine options into broad mutually exclusive categories and ask for a free-text follow-up only when needed. Do not force all ten questions when a shorter selection covers the user's goal. A compact custom interview can first ask quantity, duration and shots, then copy type, price/feature scope and CTA; other style or source details are optional. For model-line scope, the price track and configuration track remain independent; a named trim request narrows the fact pack, and omitting price does not automatically remove CTA.
+
+## 4. Effective request
+
+Merge explicit user instructions > questionnaire answers > existing applicable preferences > defaults. Store the resulting settings only in the active task context. Proceed with research, fact pack, copy and quality checks from SKILL.md. Verify numbers, price eligibility and trim scope, then produce the requested number of clean copy blocks. If the user selects custom details conflicting with one another, ask only the one necessary clarifying question. Do not show questionnaire metadata, result schema, setting summary or technical logs inside the final copy blocks.
 
 ---
 

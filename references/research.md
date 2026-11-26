@@ -2,12 +2,12 @@
 
 ## 研究目标
 
-根据用户选题有针对性地了解车型，而不是套用固定配置表。按车型、年款、市场、具体配置、动力形式确定研究范围；不跨车系、版本和上市状态混用参数。先确认身份、再研究、再写作。
+Research the actual model line, model year, market, sale status and variant matrix. Do not invent a trim from incompatible parts. Model-line advertising may combine independently verified entry prices and flagship selling points in one script while keeping their scopes clear. For trim-specific copy, constrain the facts to the requested trim.
 
 ### A. Initial Discovery
 
 1. 用品牌、车型、别名和市场查找官方信息；用户使用拼写错误或简称时验证真实名称，不自行补造车型。
-2. 确认在售/预售/已停售、年款、配置版本、动力路线和车型定位。用户未指明时默认最新在售最高配，但明确所用版本，不推断全系配备。
+2. Identify the latest on-sale model line, its entry trim and price, its highest on-sale trim and core configurations, and relevant model-line maxima with exact source variant and test cycle. Research both tracks independently. Do not infer that every variant has flagship-only features. When a particular trim is requested, research that trim instead.
 3. 若新年款尚未上市，不以预售或传闻当作正式在售车型；若找不到有效官方信息，标明限制。
 
 ### B. Dynamic Research Plan
@@ -30,7 +30,7 @@
 
 ### D. Price & Policy 独立核查
 
-价格按官方指导价、预售价、终端成交价、置换价、金融方案区分；优惠与权益不等于裸车减免。确认适用时间、地区、车型/配置、对象、前置条件、叠加限制、门店差异。不得将用户提供的门店政策写成全国统一政策，不得把库存、退网、清库、售完无补、限时等断言编造出来。用户提供政策可使用但记录 `USER_PROVIDED`，不声称已经第三方核实。将来源、适用范围与核验结果保留在事实包。台词避免“部分门店”“以门店为准”等泛化防御话术；能用准确直接的销售表述（如置换权益的真实适用对象）则使用，无法在短句中保持事实准确的局部优惠则省略，不擅自扩大范围。无可信当前政策：`NO_CONFIRMED_CURRENT_POLICY`，仅写已核实的卖点或请用户提供政策。
+价格按官方指导价、预售价、终端成交价、置换价、金融方案区分；优惠与权益不等于裸车减免。确认适用时间、地区、车型/配置、对象、前置条件、叠加限制、门店差异。不得将用户提供的门店政策写成全国统一政策，不得把库存、退网、清库、售完无补、限时等断言编造出来。用户提供政策可使用但记录 `USER_PROVIDED`，不声称已经第三方核实。将来源、适用范围与核验结果保留在事实包。台词避免“部分门店”“以门店为准”等泛化防御话术；能用准确直接的销售表述（如置换权益的真实适用对象）则使用，无法在短句中保持事实准确的局部优惠则省略，不擅自扩大范围。无可信当前政策：`NO_CONFIRMED_CURRENT_POLICY`，仅写已核实的卖点或请用户提供政策。 For model-line advertising, store the verified entry/starting price and the flagship configuration separately. State the price with its real category (official starting price, trade-in starting price, etc.) and a starting-price marker; never represent a conditional offer as an unconditional base price. Do not downgrade the flagship selling-point pool to the entry trim. If a maximum belongs to a different trim, identify its scope rather than representing a fictitious combined flagship.
 
 ### E. Fact Pack（内部结构，可按需展示）
 
@@ -43,6 +43,14 @@ vehicleIdentity:
   trim: <配置或明确适用范围>
   saleStatus: <已核实状态或未知>
   assumptions: []
+modelLineScope:
+  mode: SERIES
+  entryTrim: <verified entry trim>
+  startingPriceFactRef: <price fact ID or unknown>
+  flagshipTrim: <verified highest trim>
+  flagshipFactRefs: []
+  seriesMaximaFactRefs: []
+  # In TRIM mode, use the requested variant only.
 researchPlan:
   audience: <受众>
   topics: []

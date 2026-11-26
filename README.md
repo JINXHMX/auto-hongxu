@@ -1,6 +1,6 @@
 # Auto Hongxu | 汽车文案智能体
 
-**V1.2.0** · [![skills.sh](https://skills.sh/b/JINXHMX/automotive-copy-agent)](https://skills.sh/JINXHMX/automotive-copy-agent)
+**V1.3.0** · [![skills.sh](https://skills.sh/b/JINXHMX/automotive-copy-agent)](https://skills.sh/JINXHMX/automotive-copy-agent)
 
 一套面向中国汽车短视频创作者与经销商的可复用 Agent Skill：动态车型研究 → 事实核验 → 卖点提炼 → 文案创作 → 质量审核。
 
@@ -54,7 +54,7 @@ npx skills add JINXHMX/automotive-copy-agent --list
 
 [下载 skill.zip](./skill.zip)，在支持自定义 Skills 的客户端中按照平台的导入流程安装。ChatGPT 的技能入口及可用性取决于账户和工作空间。
 
-## V1.2.0 综合营销默认规则
+## V1.3.0 综合营销默认规则
 
 - 默认5篇、每篇20秒、5镜；按实际AI配音反馈校准115–130正文字符，优先120–125，不计标点与空白，包含CTA。
 - 每篇一个独立纯文本代码块，每镜一行、无空行、无标题/序号/分镜标签或表格，一键复制。
@@ -62,6 +62,21 @@ npx skills add JINXHMX/automotive-copy-agent --list
 - 最后一镜固定引流；默认批次至少覆盖3类渠道（直播间、头像私信、左下角链接、到店等），用户指定渠道优先。
 - 不在台词中插入“部分门店”“以门店为准”等防御性语句。事实和来源内部核验，必要条件保持真实，人工负责最终发布审核。
 - 新增字数范围和非空镜段行数校验：`python scripts/count_copy.py copies.json --min-chars 115 --max-chars 130 --lines 5`。
+
+## 车系级价格与配置
+
+默认独立核验车系入门起售价和最高在售配置的卖点，二者可在同篇文案中组合。以“XX万元起”“顶配搭载”“最高可达”等短语保持真实范围，不暗示入门价即可购买顶配配置。明确指定车型版本时按该版本生成。
+
+## 交互式需求设置
+
+- 只输入车型：先选择“默认生成”或“自定义生成”。
+- `$auto-hongxu 华境S 默认生成`：直接按5条、20秒、5镜及原营销规则执行。
+- `$auto-hongxu 华境S 自定义生成`：按问卷配置数量、时长、镜数、文案类型、价格/配置、引流渠道、风格等。
+- 已明确给出生成设置的指令直接执行，后续改稿不重复询问。
+- WorkBuddy 优先使用实际可用的原生问答选择器；其企业版 SDK 文档提供 AskUserQuestion。Codex 优先使用允许的 request_user_input。其他客户端没有原生工具时使用简短文字问答。Skill 不能强制客户端显示特定弹窗。
+- WorkBuddy 可从技能页面导入本仓库的 `skill.zip`；选择器能否触发仍需实际客户端验证。
+
+官方参考：[WorkBuddy 更新日志](https://www.codebuddy.cn/docs/workbuddy/Changelog) · [WorkBuddy Enterprise SDK 问答工具](https://cloud.tencent.cn/document/product/1831/137037)。
 
 ## 功能
 

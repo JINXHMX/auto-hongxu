@@ -8,6 +8,12 @@
 
 每篇都是完整的综合广告，优先组合3–4个不同配置/价值维度（有依据时至少2个）与可用价格/置换/金融政策。按车型选择空间、座舱、动力、补能、底盘、辅助驾驶等，不机械套目录。用具体技术名称、真实数字、配置组合和简洁收益提高信息量，而不是单点反复叙述。批量改变钩子、多个事实组合、政策位置、表达顺序和CTA渠道；不把每篇拆成单项配置科普。事实不足则补查或用其他可靠卖点；不为凑字数虚构。明确区分入门价格和高配配置。
 
+### Model-line price and feature composition
+
+Default to series-wide marketing: take the verified applicable entry price as the starting price, and prioritize the highest on-sale trim's configurations. A model-line maximum (range, power, charging, etc.) may come from another verified variant; describe it as a maximum or name the variant. Do not restrict the script to entry-level equipment merely because it contains an entry-level price. Keep price and feature clauses separate, with short commercial scope markers such as XX万元起, 顶配搭载, 高配搭载, or 最高可达. A single high-trim scope marker can introduce a group of verified features; no need to repeat the trim name for every feature. Only write all-trim/standard-equipment language where verified. Avoid implying an entry price includes the high-trim package. Never disguise offer eligibility as a universal price. Specific-trim requests override the series default.
+
+Example (fictional numbers/features for wording only): a model line starts at 149,800 yuan; its flagship has rear entertainment screen and seat ventilation. Correct: start with the model-line price, then introduce the flagship feature group. Incorrect: claim the 149,800 yuan entry version includes that rear screen. Do not use fictitious examples as vehicle facts.
+
 ## C. 20秒5镜与AI配音校准
 
 用户实测旧稿80多字约14秒，按相同AI配音节奏，默认20秒115–130正文字符，优先120–125。其他时长按约5.7–6.5字符/秒调整（30秒约170–195），用户实测或明确字数优先。字符数不计空白、标点，含末镜CTA，数字和字母逐字符计数；实际发音和停顿另估，不宣称已做真实配音测时。

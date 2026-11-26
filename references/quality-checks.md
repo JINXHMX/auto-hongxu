@@ -5,6 +5,8 @@
 | 检查项 | 通过条件 | 不通过时处理 |
 |---|---|---|
 | 车型与来源 | 型号、年款、市场、配置和工况一致，关键技术有来源 | 查证、区分或删掉 |
+| Model-line price & features | Verified entry starting price and flagship equipment selected separately, actual variant scopes clear; no implied entry-price entitlement to flagship features | Fix scope or remove unsupported feature |
+| Intake | Bare-model new request gets one mode selector; direct/default/fully specified requests skip; custom mode respects answered fields | Route correctly, do not repeatedly ask, and use text fallback if native question tools are unavailable |
 | 政策 | 内部记录时间、地区、版本和来源；口播直接且不扩大优惠范围 | 精简必要真实条件或换掉不可靠优惠，不写防御性套话 |
 | 具体性 | 关键卖点落到事实与场景 | 换成已确认的购买理由 |
 | 综合营销 | 默认每条覆盖3–4个不同配置/价值维度（至少2个有依据的维度），有适用可靠政策则融入；明确单点或素材不足例外 | 重组事实，禁止把批次拆成单卖点专栏 |
@@ -44,6 +46,11 @@ python scripts/count_copy.py copies.json --min-chars 115 --max-chars 130 --lines
 
 11. 输入：“只给车型，按默认生成。”预期：没有文案标题、分镜号、空白行、表格或防御性话术；默认5个代码块分别5行；每篇115–130字符，末行轮换直播间、头像私信、左下角链接和到店等。
 12. 输入：只查到地区性促销且受众不明确。预期：不出现“部分门店”等话术，不把局部优惠写成普惠；用其他确认配置补足字数。
+13. Fresh request: "$auto-hongxu <model>" without settings. Expected: one default/custom selector before research; native question tool only if actually exposed and allowed, otherwise concise text choices. No generated scripts until mode selected.
+14. "$auto-hongxu <model> 默认生成". Expected: skip all optional questions; generate 5 x 20 seconds x 5 lines under the existing defaults.
+15. Explicit custom mode: choose 10 copies, 30 seconds, 6 lines, live-room CTA, no price. Expected: do not re-ask known fields; fill skipped options with defaults; output 10 six-line blocks, each about 170-195 characters, all ending in the chosen CTA, no price.
+16. Fictional line has a 149,800 yuan entry trim and flagship-only rear entertainment. Expected: model-line starting price and clearly scoped flagship equipment can coexist; reject claims that the entry trim has that screen. A requested entry-trim-only script omits the flagship-only feature.
+17. Custom mode in a host without native question tools: use concise sequential text choices, not invented tool calls or claims of popup display. A follow-up revision never repeats the generation-mode gate.
 
 ## 迁移范围
 
