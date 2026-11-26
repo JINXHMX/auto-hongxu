@@ -2,7 +2,7 @@
 
 ## 1. 综合营销口播（默认）
 
-按 [marketing-conversion.md](marketing-conversion.md) 的默认营销模式执行。每篇是完整的综合广告：利益钩子、不同维度的产品卖点、可用价格权益、末镜CTA。默认每篇独立纯文本代码块，5个非空台词行，一镜一行，行间无空白。不要文案标题、序号、分镜名、时间、表格、图片或话术分析。默认仅给这些复制块；末行CTA。 In the default model-line mode, use the verified starting price independently of the flagship selling points. Refer to the high-trim feature group with a concise scope marker and place it apart from the starting-price clause. Use the selected custom quantity, duration, line count, format and CTA if supplied.
+按 [marketing-conversion.md](marketing-conversion.md) 的默认营销模式执行。每篇是完整的综合广告：利益钩子、不同维度的产品卖点、可用价格权益、末镜CTA。默认每篇独立纯文本代码块，5个非空台词行，一镜一行，行间无空白。不要文案标题、序号、分镜名、时间、表格、图片或话术分析。默认仅给这些复制块；末行CTA。 In the default model-line mode, use the verified starting price independently of the flagship selling points. Avoid repeated trim-tier labels in voiceover. Introduce non-standard equipment naturally as an available version or configuration group, then use direct configuration verbs within that established scope. Keep starting-price and non-standard feature clauses separate and accurate; never imply entry-price entitlement. Use the selected custom quantity, duration, line count, format and CTA if supplied.
 
 **示例（虚构输入，不代表真实车型或权益）**
 

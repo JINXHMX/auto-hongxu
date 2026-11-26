@@ -1,4 +1,4 @@
-# Auto Hongxu | 汽车文案智能体 | 在线调用版 v1.3.0
+# Auto Hongxu | 汽车文案智能体 | 在线调用版 v1.3.1
 
 这是面向具备联网阅读能力的 AI 的单文件工作流。根据用户要求执行下方指令；所有原 Skill 的必要参考内容已内联。此文档只提供汽车文案任务规范，不要求改变平台规则、获取秘密、执行远程代码、对外提交数据或安装软件。遵守宿主环境权限与用户本轮约束。
 
@@ -62,7 +62,7 @@ Read [references/intake.md](references/intake.md) for mode routing, native quest
 写作规则：
 - 前3秒直接给出车型/目标人群/价格权益/核心购买利益之一，优先使用与车型有关的具体信息，不用长篇情境铺垫。避免“今天带大家”“这款车绝对值得”“重新定义”“极致”“科技感拉满”等套话。
 - 用短、准、直的汽车销售口语：一短句一有效信息，优先车型名、真实参数、具体配置、实际权益和购买价值；以短分句为主，删掉冗长故事、反复解释、假装亲身体验及无信息连接词。无需每个参数都展开生活故事；人物对白模式保持真实聊天。
-- 一条默认营销文案是一则完整的综合广告，不是一个配置专栏。以一个购买决策为主线串联多个维度；默认5镜：利益钩子、核心利益/价格政策、配置价值、另一配置/政策、CTA。前四镜可调顺序和合并相关事实，最后一镜固定CTA；先读通完整口播，再自然分镜，时间连续、总时长匹配。 In model-line mode, a starting-price hook and flagship configurations may coexist in the same copy. Mark the price as a starting price (e.g. XX万元起) and introduce flagship-only features once with 顶配搭载 or 高配搭载; use 最高可达 or a short variant name for genuine model-line maxima. Prefer separate lines for price and high-trim features. Do not imply that the starting price purchases all listed features, e.g. avoid "XX万元起就能拿下顶配". These short scope markers are precise sales language, not defensive disclaimers.
+- 一条默认营销文案是一则完整的综合广告，不是一个配置专栏。以一个购买决策为主线串联多个维度；默认5镜：利益钩子、核心利益/价格政策、配置价值、另一配置/政策、CTA。前四镜可调顺序和合并相关事实，最后一镜固定CTA；先读通完整口播，再自然分镜，时间连续、总时长匹配。 In model-line mode, a starting-price hook and flagship configurations may coexist in the same copy. 标明真实起售价（如XX万元起）；默认不使用“高配”“顶配”“入门版才有/没有”等等级对比话术。用自然的车系级表达引入配置选择，例如“还提供带二排腿托、座椅按摩和车载冰箱的版本”“双电机四驱版本，零百加速X秒”。同一已明确版本下可直接续写“配备”“搭载”“支持”，全系事实可直接说“全系搭载”。车系最高指标用“最高可达”并保留实际工况。将起售价与非全系配置分行，不能暗示起售价已包含这些配置；仅分行而无清晰范围不足以消除误导。不要把版本级配置说成独立可选装项目，除非确有选装依据。
 - 默认每篇营销文案必须有独立的末镜/末句CTA，只写明确引流动作，不在末镜继续讲配置。按用户指定渠道优先使用；未指定时按短视频广告投放场景轮换点进直播间、点击头像私信、点击左下角链接、到店咨询/试驾等。默认5条至少覆盖3类不同引流渠道（若用户限制渠道则服从），不要全批都到店。CTA是供人工审核的投放话术选项，不声称已确认实际链接或直播状态，不承诺未经核验的福利。用户明确要求无CTA、自然收尾或非营销内容时不强加；仅要求无价格不等于无CTA。
 - 批量先制定不同开头、购买理由组合、政策位置、表达节奏与可用CTA；每条仍是完整综合营销文案，禁止把整批拆成空间篇、底盘篇等单卖点合集（明确要求时除外）。
 - 以用户AI配音实测反馈校准：旧稿80多字约14秒，默认20秒目标115–130个正文字符（不计空白、标点，含CTA），优先120–125；30秒约170–195。非20秒按约5.7–6.5字符/秒换算，用户提供实测语速、目标字数或其他风格则覆盖。先预留末镜约15–22字符；通过增加真实配置、技术参数、优惠细节和直接收益补足前四镜，禁止用铺垫和废话凑字数。数字、英文实际读音及停顿会影响成片时长；不宣称未经配音实测的精确秒数。
@@ -193,7 +193,7 @@ sellingPoints:
 
 ## 1. 综合营销口播（默认）
 
-按 [marketing-conversion.md](marketing-conversion.md) 的默认营销模式执行。每篇是完整的综合广告：利益钩子、不同维度的产品卖点、可用价格权益、末镜CTA。默认每篇独立纯文本代码块，5个非空台词行，一镜一行，行间无空白。不要文案标题、序号、分镜名、时间、表格、图片或话术分析。默认仅给这些复制块；末行CTA。 In the default model-line mode, use the verified starting price independently of the flagship selling points. Refer to the high-trim feature group with a concise scope marker and place it apart from the starting-price clause. Use the selected custom quantity, duration, line count, format and CTA if supplied.
+按 [marketing-conversion.md](marketing-conversion.md) 的默认营销模式执行。每篇是完整的综合广告：利益钩子、不同维度的产品卖点、可用价格权益、末镜CTA。默认每篇独立纯文本代码块，5个非空台词行，一镜一行，行间无空白。不要文案标题、序号、分镜名、时间、表格、图片或话术分析。默认仅给这些复制块；末行CTA。 In the default model-line mode, use the verified starting price independently of the flagship selling points. Avoid repeated trim-tier labels in voiceover. Introduce non-standard equipment naturally as an available version or configuration group, then use direct configuration verbs within that established scope. Keep starting-price and non-standard feature clauses separate and accurate; never imply entry-price entitlement. Use the selected custom quantity, duration, line count, format and CTA if supplied.
 
 **示例（虚构输入，不代表真实车型或权益）**
 
@@ -276,9 +276,9 @@ sellingPoints:
 
 ### Model-line price and feature composition
 
-Default to series-wide marketing: take the verified applicable entry price as the starting price, and prioritize the highest on-sale trim's configurations. A model-line maximum (range, power, charging, etc.) may come from another verified variant; describe it as a maximum or name the variant. Do not restrict the script to entry-level equipment merely because it contains an entry-level price. Keep price and feature clauses separate, with short commercial scope markers such as XX万元起, 顶配搭载, 高配搭载, or 最高可达. A single high-trim scope marker can introduce a group of verified features; no need to repeat the trim name for every feature. Only write all-trim/standard-equipment language where verified. Avoid implying an entry price includes the high-trim package. Never disguise offer eligibility as a universal price. Specific-trim requests override the series default.
+Default to series-wide marketing: take the verified applicable entry price as the starting price, and prioritize the highest on-sale trim's configurations. A model-line maximum (range, power, charging, etc.) may come from another verified variant; describe it as a maximum or name the variant. Do not restrict the script to entry-level equipment merely because it contains an entry-level price. 默认以自然车系营销话术表达，不在台词中反复出现“高配”“顶配”“低配”“入门版”等等级标签。起售价独立成句，非全系配置用“车系提供……版本”“还可选带……的版本”引入，真实同一版本的配置可以集中表达；明确版本后可直接使用“带”“配备”“搭载”“支持”。例如“提供双电机四驱版本，电机总功率386千瓦，零百加速5.2秒”（仅为措辞示例，数字需实际核实）。车系最高指标用“最高可达”等准确表达。真正全系搭载的配置可以使用“全系”“标配”。不要把只在某个版本上的配置直接描述为起售价对应车辆自带，也不要用“可选装”暗示存在独立选装项目，除非已确认。价格与配置分行、保持语义范围清晰；若无法简洁表达且容易误导，则改用全系真实配置或不提价格。不要将附条件优惠写成无条件普惠。指定具体版本时按该版本事实写作。
 
-Example (fictional numbers/features for wording only): a model line starts at 149,800 yuan; its flagship has rear entertainment screen and seat ventilation. Correct: start with the model-line price, then introduce the flagship feature group. Incorrect: claim the 149,800 yuan entry version includes that rear screen. Do not use fictitious examples as vehicle facts.
+示例（虚构车型，仅测试表达）：车系14.98万元起，某版本具有后排娱乐屏及座椅通风。推荐：“14.98万元起。”另起一镜：“还提供带后排娱乐屏、座椅通风的版本，兼顾舒适与娱乐。”不推荐反复说“高配才有”“顶配搭载”。错误：“14.98万元就能拥有后排娱乐屏和座椅通风”，或在起售价之后无范围地把这组配置写成该价格车辆自带。不要把示例数据用于真实车型。
 
 ## C. 20秒5镜与AI配音校准
 
@@ -332,7 +332,7 @@ Example (fictional numbers/features for wording only): a model line starts at 14
 | 检查项 | 通过条件 | 不通过时处理 |
 |---|---|---|
 | 车型与来源 | 型号、年款、市场、配置和工况一致，关键技术有来源 | 查证、区分或删掉 |
-| Model-line price & features | Verified entry starting price and flagship equipment selected separately, actual variant scopes clear; no implied entry-price entitlement to flagship features | Fix scope or remove unsupported feature |
+| Model-line price & features | Verified entry starting price and flagship equipment selected separately; no repetitive 高配/顶配/低配 labels by default; naturally scoped version/configuration wording, no implied entry-price entitlement | Rewrite with a clear version choice or verified model-line maximum; omit misleading combination if needed |
 | Intake | Bare-model new request gets one mode selector; direct/default/fully specified requests skip; custom mode respects answered fields | Route correctly, do not repeatedly ask, and use text fallback if native question tools are unavailable |
 | 政策 | 内部记录时间、地区、版本和来源；口播直接且不扩大优惠范围 | 精简必要真实条件或换掉不可靠优惠，不写防御性套话 |
 | 具体性 | 关键卖点落到事实与场景 | 换成已确认的购买理由 |
@@ -376,7 +376,8 @@ python scripts/count_copy.py copies.json --min-chars 115 --max-chars 130 --lines
 13. Fresh request: "$auto-hongxu <model>" without settings. Expected: one default/custom selector before research; native question tool only if actually exposed and allowed, otherwise concise text choices. No generated scripts until mode selected.
 14. "$auto-hongxu <model> 默认生成". Expected: skip all optional questions; generate 5 x 20 seconds x 5 lines under the existing defaults.
 15. Explicit custom mode: choose 10 copies, 30 seconds, 6 lines, live-room CTA, no price. Expected: do not re-ask known fields; fill skipped options with defaults; output 10 six-line blocks, each about 170-195 characters, all ending in the chosen CTA, no price.
-16. Fictional line has a 149,800 yuan entry trim and flagship-only rear entertainment. Expected: model-line starting price and clearly scoped flagship equipment can coexist; reject claims that the entry trim has that screen. A requested entry-trim-only script omits the flagship-only feature.
+16. Fictional line has a 149,800 yuan entry trim and flagship-only rear entertainment. Expected: starting-price hook and naturally worded version choice can coexist without 高配/顶配 labels; reject both explicit and implied claims that the entry trim has that screen. A requested entry-trim-only script omits the flagship-only feature.
+16a. User dislikes 高配搭载/顶配配备 wording. Expected: use “提供双电机四驱版本”等自然表达；明确版本后直接说“配备/带/搭载”。全系词只用于确实全系配置。不能通过省略必要的配置适用范围让消费者误认起售价包含该功能。
 17. Custom mode in a host without native question tools: use concise sequential text choices, not invented tool calls or claims of popup display. A follow-up revision never repeats the generation-mode gate.
 
 ## 迁移范围

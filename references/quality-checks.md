@@ -5,7 +5,7 @@
 | 检查项 | 通过条件 | 不通过时处理 |
 |---|---|---|
 | 车型与来源 | 型号、年款、市场、配置和工况一致，关键技术有来源 | 查证、区分或删掉 |
-| Model-line price & features | Verified entry starting price and flagship equipment selected separately, actual variant scopes clear; no implied entry-price entitlement to flagship features | Fix scope or remove unsupported feature |
+| Model-line price & features | Verified entry starting price and flagship equipment selected separately; no repetitive 高配/顶配/低配 labels by default; naturally scoped version/configuration wording, no implied entry-price entitlement | Rewrite with a clear version choice or verified model-line maximum; omit misleading combination if needed |
 | Intake | Bare-model new request gets one mode selector; direct/default/fully specified requests skip; custom mode respects answered fields | Route correctly, do not repeatedly ask, and use text fallback if native question tools are unavailable |
 | 政策 | 内部记录时间、地区、版本和来源；口播直接且不扩大优惠范围 | 精简必要真实条件或换掉不可靠优惠，不写防御性套话 |
 | 具体性 | 关键卖点落到事实与场景 | 换成已确认的购买理由 |
@@ -49,7 +49,8 @@ python scripts/count_copy.py copies.json --min-chars 115 --max-chars 130 --lines
 13. Fresh request: "$auto-hongxu <model>" without settings. Expected: one default/custom selector before research; native question tool only if actually exposed and allowed, otherwise concise text choices. No generated scripts until mode selected.
 14. "$auto-hongxu <model> 默认生成". Expected: skip all optional questions; generate 5 x 20 seconds x 5 lines under the existing defaults.
 15. Explicit custom mode: choose 10 copies, 30 seconds, 6 lines, live-room CTA, no price. Expected: do not re-ask known fields; fill skipped options with defaults; output 10 six-line blocks, each about 170-195 characters, all ending in the chosen CTA, no price.
-16. Fictional line has a 149,800 yuan entry trim and flagship-only rear entertainment. Expected: model-line starting price and clearly scoped flagship equipment can coexist; reject claims that the entry trim has that screen. A requested entry-trim-only script omits the flagship-only feature.
+16. Fictional line has a 149,800 yuan entry trim and flagship-only rear entertainment. Expected: starting-price hook and naturally worded version choice can coexist without 高配/顶配 labels; reject both explicit and implied claims that the entry trim has that screen. A requested entry-trim-only script omits the flagship-only feature.
+16a. User dislikes 高配搭载/顶配配备 wording. Expected: use “提供双电机四驱版本”等自然表达；明确版本后直接说“配备/带/搭载”。全系词只用于确实全系配置。不能通过省略必要的配置适用范围让消费者误认起售价包含该功能。
 17. Custom mode in a host without native question tools: use concise sequential text choices, not invented tool calls or claims of popup display. A follow-up revision never repeats the generation-mode gate.
 
 ## 迁移范围

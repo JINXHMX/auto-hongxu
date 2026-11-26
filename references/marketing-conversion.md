@@ -10,9 +10,9 @@
 
 ### Model-line price and feature composition
 
-Default to series-wide marketing: take the verified applicable entry price as the starting price, and prioritize the highest on-sale trim's configurations. A model-line maximum (range, power, charging, etc.) may come from another verified variant; describe it as a maximum or name the variant. Do not restrict the script to entry-level equipment merely because it contains an entry-level price. Keep price and feature clauses separate, with short commercial scope markers such as XX万元起, 顶配搭载, 高配搭载, or 最高可达. A single high-trim scope marker can introduce a group of verified features; no need to repeat the trim name for every feature. Only write all-trim/standard-equipment language where verified. Avoid implying an entry price includes the high-trim package. Never disguise offer eligibility as a universal price. Specific-trim requests override the series default.
+Default to series-wide marketing: take the verified applicable entry price as the starting price, and prioritize the highest on-sale trim's configurations. A model-line maximum (range, power, charging, etc.) may come from another verified variant; describe it as a maximum or name the variant. Do not restrict the script to entry-level equipment merely because it contains an entry-level price. 默认以自然车系营销话术表达，不在台词中反复出现“高配”“顶配”“低配”“入门版”等等级标签。起售价独立成句，非全系配置用“车系提供……版本”“还可选带……的版本”引入，真实同一版本的配置可以集中表达；明确版本后可直接使用“带”“配备”“搭载”“支持”。例如“提供双电机四驱版本，电机总功率386千瓦，零百加速5.2秒”（仅为措辞示例，数字需实际核实）。车系最高指标用“最高可达”等准确表达。真正全系搭载的配置可以使用“全系”“标配”。不要把只在某个版本上的配置直接描述为起售价对应车辆自带，也不要用“可选装”暗示存在独立选装项目，除非已确认。价格与配置分行、保持语义范围清晰；若无法简洁表达且容易误导，则改用全系真实配置或不提价格。不要将附条件优惠写成无条件普惠。指定具体版本时按该版本事实写作。
 
-Example (fictional numbers/features for wording only): a model line starts at 149,800 yuan; its flagship has rear entertainment screen and seat ventilation. Correct: start with the model-line price, then introduce the flagship feature group. Incorrect: claim the 149,800 yuan entry version includes that rear screen. Do not use fictitious examples as vehicle facts.
+示例（虚构车型，仅测试表达）：车系14.98万元起，某版本具有后排娱乐屏及座椅通风。推荐：“14.98万元起。”另起一镜：“还提供带后排娱乐屏、座椅通风的版本，兼顾舒适与娱乐。”不推荐反复说“高配才有”“顶配搭载”。错误：“14.98万元就能拥有后排娱乐屏和座椅通风”，或在起售价之后无范围地把这组配置写成该价格车辆自带。不要把示例数据用于真实车型。
 
 ## C. 20秒5镜与AI配音校准
 

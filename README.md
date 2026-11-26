@@ -1,6 +1,6 @@
 # Auto Hongxu | 汽车文案智能体
 
-**V1.3.0** · [![skills.sh](https://skills.sh/b/JINXHMX/automotive-copy-agent)](https://skills.sh/JINXHMX/automotive-copy-agent)
+**V1.3.1** · [![skills.sh](https://skills.sh/b/JINXHMX/automotive-copy-agent)](https://skills.sh/JINXHMX/automotive-copy-agent)
 
 一套面向中国汽车短视频创作者与经销商的可复用 Agent Skill：动态车型研究 → 事实核验 → 卖点提炼 → 文案创作 → 质量审核。
 
@@ -54,7 +54,7 @@ npx skills add JINXHMX/automotive-copy-agent --list
 
 [下载 skill.zip](./skill.zip)，在支持自定义 Skills 的客户端中按照平台的导入流程安装。ChatGPT 的技能入口及可用性取决于账户和工作空间。
 
-## V1.3.0 综合营销默认规则
+## V1.3.1 综合营销默认规则
 
 - 默认5篇、每篇20秒、5镜；按实际AI配音反馈校准115–130正文字符，优先120–125，不计标点与空白，包含CTA。
 - 每篇一个独立纯文本代码块，每镜一行、无空行、无标题/序号/分镜标签或表格，一键复制。
@@ -65,7 +65,7 @@ npx skills add JINXHMX/automotive-copy-agent --list
 
 ## 车系级价格与配置
 
-默认独立核验车系入门起售价和最高在售配置的卖点，二者可在同篇文案中组合。以“XX万元起”“顶配搭载”“最高可达”等短语保持真实范围，不暗示入门价即可购买顶配配置。明确指定车型版本时按该版本生成。
+默认独立核验车系入门起售价和最高在售配置的卖点，二者可在同篇文案中组合。以“XX万元起”“提供……版本”“最高可达”等自然车系话术保持真实范围，默认不使用反复强调高配、顶配的等级标签，不暗示入门价包含非全系配置。明确指定车型版本时按该版本生成。
 
 ## 交互式需求设置
 
