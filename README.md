@@ -1,6 +1,6 @@
 # Auto Hongxu | 汽车文案智能体
 
-**V1.1.1** · [![skills.sh](https://skills.sh/b/JINXHMX/automotive-copy-agent)](https://skills.sh/JINXHMX/automotive-copy-agent)
+**V1.2.0** · [![skills.sh](https://skills.sh/b/JINXHMX/automotive-copy-agent)](https://skills.sh/JINXHMX/automotive-copy-agent)
 
 一套面向中国汽车短视频创作者与经销商的可复用 Agent Skill：动态车型研究 → 事实核验 → 卖点提炼 → 文案创作 → 质量审核。
 
@@ -54,12 +54,14 @@ npx skills add JINXHMX/automotive-copy-agent --list
 
 [下载 skill.zip](./skill.zip)，在支持自定义 Skills 的客户端中按照平台的导入流程安装。ChatGPT 的技能入口及可用性取决于账户和工作空间。
 
-## V1.1.0 综合营销默认规则
+## V1.2.0 综合营销默认规则
 
-- 每条默认覆盖2–3个不同配置/价值维度；有适用且可靠的价格与优惠则融入，不按单卖点拆批。
-- 默认20秒5个口播镜段，前3秒利益钩子，短句高密度，最后一镜固定引流CTA；纯文案用末句CTA。
-- 允许指定直播间、左下角链接、头像私信或到店试驾。未确认渠道时采用到店咨询/试驾；明确无引流或自然收尾、单卖点等需求优先。
-- 不编造车型事实、价格、优惠、库存、链接或体验；来源在正文之外说明。
+- 默认5篇、每篇20秒、5镜；按实际AI配音反馈校准115–130正文字符，优先120–125，不计标点与空白，包含CTA。
+- 每篇一个独立纯文本代码块，每镜一行、无空行、无标题/序号/分镜标签或表格，一键复制。
+- 每条优先融合3–4个不同配置/价值维度及可靠适用的价格权益；不按单卖点拆批，不用废话凑字数。
+- 最后一镜固定引流；默认批次至少覆盖3类渠道（直播间、头像私信、左下角链接、到店等），用户指定渠道优先。
+- 不在台词中插入“部分门店”“以门店为准”等防御性语句。事实和来源内部核验，必要条件保持真实，人工负责最终发布审核。
+- 新增字数范围和非空镜段行数校验：`python scripts/count_copy.py copies.json --min-chars 115 --max-chars 130 --lines 5`。
 
 ## 功能
 

@@ -1,7 +1,7 @@
 ---
 name: auto-hongxu
 description: >-
-  Generate, research, fact-check, rewrite and storyboard Chinese automotive short-video marketing copy. Use when asked to research a car model, extract selling points, write dealer or creator talking-head scripts, Douyin automotive advertisements, conversational or plot-twist videos, promotional offer copy, large-text poster copy, batch variants, or turn existing vehicle copy into a shoot-ready script. Accept a vehicle name, model year/trim, supplied dealer policy, source materials, duration, shot count, quantity, audience and style; produce concise, fact-grounded, conversion-oriented multi-selling-point copy with verified specifications, applicable offers and a dedicated final CTA by default. Also use for revisions, length matching, and checking a script for unsupported claims. Do not activate for unrelated vehicle repair, purchasing advice, or general non-automotive writing unless the user explicitly requests this workflow.
+  Generate, research, fact-check, rewrite and storyboard Chinese automotive short-video marketing copy. Use when asked to research a car model, extract selling points, write dealer or creator talking-head scripts, Douyin automotive advertisements, conversational or plot-twist videos, promotional offer copy, large-text poster copy, batch variants, or turn existing vehicle copy into a shoot-ready script. Accept a vehicle name, model year/trim, supplied dealer policy, source materials, duration, shot count, quantity, audience and style; produce concise, fact-grounded multi-selling-point sales copy in separate copyable plain-text blocks, one shot per line, with a varied final CTA and fast AI voiceover pacing by default. Also use for revisions, length matching, and checking a script for unsupported claims. Do not activate for unrelated vehicle repair, purchasing advice, or general non-automotive writing unless the user explicitly requests this workflow.
 ---
 
 # Auto Hongxu | 汽车文案智能体
@@ -15,13 +15,13 @@ description: >-
 提取：品牌/车型/市场/年款/配置版本、文案类型、投放渠道、目标用户、主题/指定卖点、用户提供的政策及适用条件、时长、数量、镜头数、场景/人物、语言风格、是否需要 CTA、字数/格式及参考素材。沿用对话中有效约束，不重复询问。
 
 - 只给车型：以中国大陆在售车型为默认研究市场（用户给出其他市场则覆盖），研究最新在售年款及最高配置；明确标出假设，不能把最高配说成全系标配。若价格涉及入门款/其他配置，独立标注版本。车型名称无法确认时，先检索正确名称，不猜测。
-- 默认综合营销口播：5条、每条约20秒、5个口播镜段（仅台词，不强加机位表）；最后一镜专门CTA。用户指定数量、时长、镜头数或纯文案时覆盖默认值；纯文案保留末句CTA，不显示镜头号。仅明确要求详细拍摄脚本时补机位、画面等。
-- 默认主动核查可用指导价、置换、金融、补贴等价格权益并融入综合文案；政策不明：不发明。用户已给出政策时注明为用户/门店提供的口径，保留条件；若与可靠资料冲突，指出差异，不混用。
+- 默认综合营销口播：5条、每条20秒、5个口播镜段。每篇一个独立纯文本代码块，每镜一行，行间无空行，不加标题、序号、分镜标签、时间、表格或分析。最后一行专门CTA。用户指定数量、时长、镜数或格式时覆盖默认值；仅明确要求详细拍摄脚本时补机位、画面等。
+- 默认主动核查可用指导价、置换、金融、补贴等价格权益并融入综合文案；政策不明：不发明。用户提供的门店政策按其口径起草，记录在内部事实包；不在口播插入来源或防御性说明。保留改变事实含义的必要条件，能用直接销售语言表达则精简；不能准确简洁表达的局部或未确认优惠，改用其他已确认卖点。
 - 缺少非必要信息时作合理假设并继续，只有车型身份或关键购买条件确实无法辨明且会影响内容时才询问。
 
 选择工作模式：
 - **研究/卖点**：执行步骤 2–3；输出所请求的事实或卖点及来源。
-- **全新车型文案**：执行步骤 2–5，默认隐藏内部事实包，仅在文案后列关键来源/待确认项。
+- **全新车型文案**：执行步骤 2–5，默认只交付可复制文案块；事实包留在内部。用户要求研究或平台要求引用时在文案块之外提供来源，必要的不确定性也不放入配音正文。
 - **仅基于用户素材写作/改写/转分镜**：保留已有事实，不擅自引入新参数；若用户要求核查或发现关键事实冲突，执行必要的研究；如果明确禁止联网，则只依赖提供的素材并标注未独立核实。
 - **批量、单条重做、局部改稿**：复用本轮已核验事实，按步骤 4–5 处理；只改用户指定的范围。新增车型、版本、政策或新的完整生成批次须重新检查相关事实的时效性。
 
@@ -35,7 +35,7 @@ description: >-
 
 ## 3. Selling Point Engine：从事实到购买理由
 
-把每个候选卖点写成 `theme / userProblem / userBenefit / scenarios / factRefs / strength / visualPotential`。默认每篇组合2–3个不同配置/价值维度，并优先融合适用且已确认的价格或优惠政策（不是一篇只讲一个点）。结合受众、时长和已核验事实选择，不以重复细节冒充多个维度。事实有限或视频极短则减少维度，不编造。明确指定单卖点时才切换单点模式。
+把每个候选卖点写成 `theme / userProblem / userBenefit / scenarios / factRefs / strength / visualPotential`。默认每篇组合3–4个不同配置/价值维度（至少2个有依据的维度），并优先融合适用且已确认的价格或优惠政策（不是一篇只讲一个点）。结合受众、时长和已核验事实选择，不以重复细节冒充多个维度。事实有限或视频极短则减少维度，不编造。明确指定单卖点时才切换单点模式。
 
 事实 → 解决的问题 → 使用场景 → 用户收益 → 适合镜头表现的语言。不要把参数的重命名视为卖点。不同脚本可以选不同事实组合，但必须来自同一可信事实包。
 
@@ -47,21 +47,21 @@ description: >-
 - 前3秒直接给出车型/目标人群/价格权益/核心购买利益之一，优先使用与车型有关的具体信息，不用长篇情境铺垫。避免“今天带大家”“这款车绝对值得”“重新定义”“极致”“科技感拉满”等套话。
 - 用短、准、直的汽车销售口语：一短句一有效信息，优先车型名、真实参数、具体配置、实际权益和购买价值；以短分句为主，删掉冗长故事、反复解释、假装亲身体验及无信息连接词。无需每个参数都展开生活故事；人物对白模式保持真实聊天。
 - 一条默认营销文案是一则完整的综合广告，不是一个配置专栏。以一个购买决策为主线串联多个维度；默认5镜：利益钩子、核心利益/价格政策、配置价值、另一配置/政策、CTA。前四镜可调顺序和合并相关事实，最后一镜固定CTA；先读通完整口播，再自然分镜，时间连续、总时长匹配。
-- 默认每篇营销文案必须有独立的末镜/末句CTA，只写明确引流动作，不在末镜继续讲配置。按用户指定渠道使用进直播间、点击左下角链接、点击头像私信、到店试驾等；未确认链接或直播可用时用到店咨询/试驾等不依赖界面的CTA。用户明确要求无CTA、自然收尾或非营销内容时不强加；仅要求无价格不等于无CTA。
+- 默认每篇营销文案必须有独立的末镜/末句CTA，只写明确引流动作，不在末镜继续讲配置。按用户指定渠道优先使用；未指定时按短视频广告投放场景轮换点进直播间、点击头像私信、点击左下角链接、到店咨询/试驾等。默认5条至少覆盖3类不同引流渠道（若用户限制渠道则服从），不要全批都到店。CTA是供人工审核的投放话术选项，不声称已确认实际链接或直播状态，不承诺未经核验的福利。用户明确要求无CTA、自然收尾或非营销内容时不强加；仅要求无价格不等于无CTA。
 - 批量先制定不同开头、购买理由组合、政策位置、表达节奏与可用CTA；每条仍是完整综合营销文案，禁止把整批拆成空间篇、底盘篇等单卖点合集（明确要求时除外）。
-- 以实际朗读时间调整长度。20秒通常约65–85个中文口播字符（含CTA），30秒约95–125；先给末镜预留约3–4秒，再按时长分配前镜；数字、英文、停顿、多人对白影响朗读时间。时长是估算，不声称已做真人实测。明确字数要求优先，区分台词与标题/画面说明。
+- 以用户AI配音实测反馈校准：旧稿80多字约14秒，默认20秒目标115–130个正文字符（不计空白、标点，含CTA），优先120–125；30秒约170–195。非20秒按约5.7–6.5字符/秒换算，用户提供实测语速、目标字数或其他风格则覆盖。先预留末镜约15–22字符；通过增加真实配置、技术参数、优惠细节和直接收益补足前四镜，禁止用铺垫和废话凑字数。数字、英文实际读音及停顿会影响成片时长；不宣称未经配音实测的精确秒数。
 
 ## 5. Quality Guard：交付前逐条审核
 
 逐条执行 [references/quality-checks.md](references/quality-checks.md)；发现问题自行修订再交付。至少确认：
 
 1. 车型版本正确、每项具体事实有可靠依据；禁止将辅助驾驶描述成自动驾驶或安全保证。
-2. 用户明确的数量、时长、字数、分镜数、CTA、风格、场景和不变项全部满足。
+2. 用户明确的数量、时长、字数、分镜数、CTA、风格、场景和不变项全部满足。默认每篇独立代码块内恰好5个非空台词行、115–130正文字符，无序号或标签；不合格先重写。
 3. 默认营销逐篇检查综合性（不同配置/价值维度、已确认可用政策）、短句信息密度与独立末镜CTA；若退化为单点测评、长篇叙述或缺CTA，必须重写后再交付。无空泛夸张、绝对化承诺或虚假稀缺。
 4. 批量差异明显；某条不合格时单独修正，保留通过的条目，不因单条失败丢弃整批。
 5. 镜头动作可执行、台词与画面一致、秒数连续、总时长正确；不假定已有素材。
 
-输出用户可直接复制的中文文案或拍摄脚本。必要的事实来源或政策限制在正文之外列明，避免破坏口播。用户明确要求仅输出文案时，不展开研究过程；若缺少核验且可能影响真实性，用精简备注或省去该事实，不掩盖限制。未要求图片时不生成图片。若精确字数/等长是硬约束，在可执行脚本的环境中用 `scripts/count_copy.py` 检查；无法执行时不要声称已精准验证。
+默认最终只输出N个独立的纯文本代码块，块内只有口播原文（每镜一行、无空行），不加编号、标题、分镜/口播标签、表格、说明、字数、审核结果或推荐后缀。不要在台词里写“部分门店”“具体以门店为准”“建议咨询确认”“可能”“据公开资料”等防御性套话；改用准确的直接表达，不能把地区性或附条件政策改成无条件普惠。人工负责最终选稿与发布审核，不把审核意见混入稿件；必要来源/限制仅在块外另列。若未要求图片则不生成图片。默认批次与精确字数任务均在可执行环境中运行 `scripts/count_copy.py`，用 `--min-chars 115 --max-chars 130 --lines 5` 检查默认每篇，按用户条件调整；无法运行时人工检查且不宣称机械通过。
 
 ## 附属资源
 
