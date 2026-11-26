@@ -1,6 +1,6 @@
 # 汽车文案智能体 | Automotive Copy Agent
 
-**V1.0.0** · [![skills.sh](https://skills.sh/b/JINXHMX/automotive-copy-agent)](https://skills.sh/JINXHMX/automotive-copy-agent)
+**V1.1.0** · [![skills.sh](https://skills.sh/b/JINXHMX/automotive-copy-agent)](https://skills.sh/JINXHMX/automotive-copy-agent)
 
 一套面向中国汽车短视频创作者与经销商的可复用 Agent Skill：动态车型研究 → 事实核验 → 卖点提炼 → 文案创作 → 质量审核。
 
@@ -17,7 +17,7 @@ npx skills add JINXHMX/automotive-copy-agent
 安装后，在支持 `$` 调用语法的客户端输入：
 
 ```text
-$automotive-copy-agent 生成10条华境S的30秒口播，切入角度不同，不要直播间引导。
+$automotive-copy-agent 生成10条华境S的30秒综合营销口播，配置与适用优惠结合，末镜引流。
 ```
 
 也可直接说“使用汽车文案智能体，生成5条20秒汽车营销文案”。客户端支持自动匹配时，无需显式指定技能名称。不同客户端的触发语法可能不同。
@@ -51,6 +51,13 @@ npx skills add JINXHMX/automotive-copy-agent --list
 ## ChatGPT 原生导入
 
 [下载 skill.zip](./skill.zip)，在支持自定义 Skills 的客户端中按照平台的导入流程安装。ChatGPT 的技能入口及可用性取决于账户和工作空间。
+
+## V1.1.0 综合营销默认规则
+
+- 每条默认覆盖2–3个不同配置/价值维度；有适用且可靠的价格与优惠则融入，不按单卖点拆批。
+- 默认20秒5个口播镜段，前3秒利益钩子，短句高密度，最后一镜固定引流CTA；纯文案用末句CTA。
+- 允许指定直播间、左下角链接、头像私信或到店试驾。未确认渠道时采用到店咨询/试驾；明确无引流或自然收尾、单卖点等需求优先。
+- 不编造车型事实、价格、优惠、库存、链接或体验；来源在正文之外说明。
 
 ## 功能
 
