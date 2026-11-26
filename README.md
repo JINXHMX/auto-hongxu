@@ -1,2 +1,81 @@
-# automotive-copy-agent
-汽车短视频文案智能体 | Automotive Copy Agent
+# 汽车文案智能体 | Automotive Copy Agent
+
+**V1.0.0** · [![skills.sh](https://skills.sh/b/JINXHMX/automotive-copy-agent)](https://skills.sh/JINXHMX/automotive-copy-agent)
+
+一套面向中国汽车短视频创作者与经销商的可复用 Agent Skill：动态车型研究 → 事实核验 → 卖点提炼 → 文案创作 → 质量审核。
+
+## 一键安装
+
+在支持 Node.js（当前 Skills CLI 要求 22.20+）的终端中执行：
+
+```bash
+npx skills add JINXHMX/automotive-copy-agent
+```
+
+选择需要安装的 AI 客户端，如 Codex、Claude Code、Cursor。默认安装到当前项目；需要全局安装时追加 `-g`。安装前可使用 `--list` 查看技能，并审阅仓库内容。
+
+安装后，在支持 `$` 调用语法的客户端输入：
+
+```text
+$automotive-copy-agent 生成10条华境S的30秒口播，切入角度不同，不要直播间引导。
+```
+
+也可直接说“使用汽车文案智能体，生成5条20秒汽车营销文案”。客户端支持自动匹配时，无需显式指定技能名称。不同客户端的触发语法可能不同。
+
+## 免安装使用
+
+支持 Skills CLI 的环境可生成一次性使用提示词（不安装 Skill）：
+
+```bash
+npx skills use JINXHMX/automotive-copy-agent@automotive-copy-agent
+```
+
+普通联网聊天 AI 可尝试输入：
+
+```text
+加载 GitHub: JINXHMX/automotive-copy-agent 的 ONLINE.md
+```
+
+若 AI 无法定位，直接提供 [ONLINE.md 原始文件](https://raw.githubusercontent.com/JINXHMX/automotive-copy-agent/main/ONLINE.md) 并要求读取完整内容后执行任务。无法读取时应说明，不能假装加载成功。网页读取并不等于原生 Skill 安装。
+
+## 更新与校验
+
+```bash
+npx skills check
+npx skills update automotive-copy-agent
+npx skills add JINXHMX/automotive-copy-agent --list
+```
+
+使用者可在 [Skills.sh](https://skills.sh/) 搜索技能；排行榜及收录由平台根据安装活动等因素管理，并非提交仓库后立即保证可搜索。
+
+## ChatGPT 原生导入
+
+[下载 skill.zip](./skill.zip)，在支持自定义 Skills 的客户端中按照平台的导入流程安装。ChatGPT 的技能入口及可用性取决于账户和工作空间。
+
+## 功能
+
+| 模块 | 能力 |
+|---|---|
+| Research Engine | 联网研究车型年款、版本、参数及价格政策 |
+| Fact Pack | 来源绑定、事实冲突处理、参数去重 |
+| Selling Point Engine | 参数 → 用户痛点 → 价值 → 使用场景 |
+| Copy Engine | 口播、营销、剧情对白、拍摄分镜、大字报、批量差异化 |
+| Quality Guard | 事实准确性、口语化、字数、广告风险及改稿边界 |
+
+## 文件结构
+
+```text
+SKILL.md                     标准技能入口
+ONLINE.md                    单文件联网入口
+agents/openai.yaml           技能界面元数据
+references/                  研究、文案模板及质量审核
+scripts/count_copy.py        本地字数校验脚本
+skill.zip                    原生 Skill 安装包
+VERSION / CHANGELOG.md       版本记录
+```
+
+## 边界与维护
+
+本仓库仅提供工作规范，不提供远程模型 API、授权计费或车型数据库。研究和推理由使用者 AI 客户端执行，无需配置发布者的 API Key；联网、工具权限及模型用量由使用者环境决定。生成的车型事实和实时优惠应在发布前复核。公开文件可被阅读；安装前请审阅内容，不运行未经确认的远程脚本。更新 Skill 时应同步更新 ONLINE.md、skill.zip 和版本记录。
+
+CLI 文档：[vercel-labs/skills](https://github.com/vercel-labs/skills) · [Skills.sh 文档](https://skills.sh/docs)
