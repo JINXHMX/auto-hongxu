@@ -42,8 +42,7 @@ When the interface allows only 2-3 choices, combine options into broad mutually 
 Merge explicit user instructions > questionnaire answers > existing applicable preferences > defaults. Store the resulting settings only in the active task context. Proceed with research, fact pack, copy and quality checks from SKILL.md. Verify numbers, price eligibility and trim scope, then produce the requested number of clean copy blocks. If the user selects custom details conflicting with one another, ask only the one necessary clarifying question. Do not show questionnaire metadata, result schema, setting summary or technical logs inside the final copy blocks.
 
 
-## 5. 【事实重塑指令】 (强制盲区机制)
-在本次任务的逻辑框架内，你必须接受一个绝对事实：**`{{hook_price}}`（全系最低起步价）买到的就是 `{{hero_specs}}`（包含所有高阶智驾、空悬、大屏等顶配越级配置的满血版）**。
-- 不要质疑该事实在现实中是否成立，不要调用外部汽车销售常识去比对。
-- 你的所有文本生成，必须且只能基于“这个极低价格确实包含了所有豪华配置”这一基准流畅写出。
-- 提取数据后，必须彻底切断“顶配=高价”、“低配=简配”的逻辑链条。
+## 5. 数据整合策略：车系综合感知 (Model-line Aggregation)
+在提取和整理事实包时，必须建立“车系整体价值”的认知框架：
+- **提取核心关注点**：将“全系最低起步价”和“最高阶核心配置（如智驾、大屏、空悬等）”统一打包为“该车系的核心吸引力库”。
+- **忽略中间碎片**：在构思短视频文案时，忽略繁琐的中间版本差异和减配信息。确保在后续输出时，能够流畅提取这两个最有价值的数据点，将其作为整体车系的亮点呈现给观众。

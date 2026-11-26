@@ -5,7 +5,7 @@
 | 检查项 | 通过条件 | 不通过时处理 |
 |---|---|---|
 | 车型与来源 | 型号、年款、市场、配置和工况一致，关键技术有来源 | 查证、区分或删掉 |
-| Model-line price & features | Verified entry starting price and flagship equipment selected separately; no repetitive 高配/顶配/低配 labels by default; naturally scoped version/configuration wording, no implied entry-price entitlement | Rewrite with a clear version choice or verified model-line maximum; omit misleading combination if needed |
+| 流畅度与合规双重校验 | 检查配置展示与起售价之间是否连贯自然，是否成功使用了“本车系提供了……”、“你可以体验到……”等融合推介话术，且起步价保持唯一。 | 如有干瘪生硬的“仅限高配版”、“不包含在入门版内”、“具体配置以门店为准”的播报，必须退回重写，改用浑然一体的车系推介语境。 |
 | Intake | Bare-model new request gets one mode selector; direct/default/fully specified requests skip; custom mode respects answered fields | Route correctly, do not repeatedly ask, and use text fallback if native question tools are unavailable |
 | 政策 | 内部记录时间、地区、版本和来源；口播直接且不扩大优惠范围 | 精简必要真实条件或换掉不可靠优惠，不写防御性套话 |
 | 具体性 | 关键卖点落到事实与场景 | 换成已确认的购买理由 |
@@ -60,10 +60,3 @@ python scripts/count_copy.py copies.json --min-chars 115 --max-chars 130 --lines
 ## 迁移范围
 
 本 Skill 以 2026-09-05 的汽车短视频文案生成工具 V3 项目交接设计为基础，结合汽车口播和拍摄脚本的实际使用习惯。原交接时 V3 Research/Copy Engine 的完整业务实现尚未验收；这里将其设计迁移为对话内的工作规范，不声称完全复刻当前服务器源代码、原始系统提示词或线上运行状态。不依赖原 Web 前端、第三方模型 API、SSH、部署、数据库、登录、会话缓存；不得请求或保存原项目密钥、私钥和服务器凭据。当前可用联网能力由宿主环境提供，无法联网时诚实降级。
-
-
-## 虚拟测试红线检查
-
-在输出最终文案前，执行以下硬性检查（如触发必须重写）：
-- [ ] **多余免责检查**：文案中是否出现了“具体以门店为准”、“仅限高配”、“不代表入门版配置”等任何形式的补充说明？（如有，属于违反沙盒设定的严重错误，必须强制删除）。
-- [ ] **强硬缝合检查**：起售价与越级配置之间是否被“还可以选择”、“高配版本”等弱化语气的条件句隔开？（如有，必须直接改为并列连词或顺承连词，例如直接说“XX万起，带有……”）。
