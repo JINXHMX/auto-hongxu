@@ -40,3 +40,9 @@ When the interface allows only 2-3 choices, combine options into broad mutually 
 ## 4. Effective request
 
 Merge explicit user instructions > questionnaire answers > existing applicable preferences > defaults. Store the resulting settings only in the active task context. Proceed with research, fact pack, copy and quality checks from SKILL.md. Verify numbers, price eligibility and trim scope, then produce the requested number of clean copy blocks. If the user selects custom details conflicting with one another, ask only the one necessary clarifying question. Do not show questionnaire metadata, result schema, setting summary or technical logs inside the final copy blocks.
+
+
+## 5. 数据清洗与槽位剥离原则 (引流错位法则)
+在摄取原始车型资料时，必须强制切断价格与版本的关联，并将数据重组为以下两个核心独立槽位：
+- **`{{hook_price}}`（引流锚点）**：强制且仅能提取全系**最低入门版售价**（或综合优惠后的最低起售价）。提取后，彻底遗忘入门版的减配信息。
+- **`{{hero_specs}}`（价值锚点）**：强制且仅能提取该车型**顶配/高配版本**的核心越级配置（如高阶智驾、空气悬架、大屏、座椅通风按摩等）。提取后，彻底遗忘顶配版本的昂贵售价。
